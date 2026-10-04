@@ -1,221 +1,62 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff8f5">
-<meta name="description" content="Album 18 halaman untuk kesayangan.">
-<title>Untuk Kesayanganku ♡</title>
-
-<style>
-:root{--ink:#542a33;--muted:#927b7f;--rose:#c96f7c;--rose-dark:#a94f60;--paper:#fffaf8;--line:#f0dedb}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 7% 15%,#fce7e2 0,transparent 27%),radial-gradient(ellipse at 93% 80%,#f6e9ef 0,transparent 28%),var(--paper);color:var(--ink);font-family:ui-serif,Georgia,'Times New Roman',serif}
-.wrap{width:min(1100px,100% - 40px);margin:auto;padding:25px 0 32px}
-.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;color:var(--muted);font:600 11px/1.2 system-ui,sans-serif;letter-spacing:.17em;text-transform:uppercase}
-.brand{display:flex;align-items:center;gap:9px}
-.brand span{color:var(--rose);font-size:17px}
-.top-note{letter-spacing:.08em;text-transform:none;font-weight:500}
-.page{display:none;animation:enter .35s ease}
-.page.active{display:block}
-@keyframes enter{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
-.intro-page{height:min(74vh,700px);min-height:480px;display:none;align-items:center;justify-content:center;text-align:center;border:1px solid #f1dfdc;border-radius:22px;background:linear-gradient(145deg,#fffdf9dd,#fcebe8d9);box-shadow:0 22px 62px #76545b16;position:relative;overflow:hidden}
-.intro-page.active{display:flex}
-.intro-page:before,.intro-page:after{position:absolute;color:#d98b95a8;font-size:56px}
-.intro-page:before{content:'♡';left:9%;top:15%;transform:rotate(-18deg)}
-.intro-page:after{content:'♡';right:10%;bottom:13%;transform:rotate(14deg)}
-.intro-content{max-width:600px;padding:30px}
-.eyebrow{color:var(--rose-dark);font:700 11px system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase}
-.intro-page h1{font-size:clamp(42px,7vw,76px);font-weight:500;letter-spacing:-.05em;margin:14px 0}
-.intro-page p{max-width:430px;margin:0 auto 28px;color:var(--muted);font:15px/1.8 system-ui,sans-serif}
-.start{border:0;background:var(--rose);color:white;border-radius:30px;padding:14px 23px;font:600 13px system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 20px #c96f7c3b;transition:.2s}
-.start:hover{background:var(--rose-dark);transform:translateY(-2px)}
-.stage{display:grid;grid-template-columns:48px minmax(0,760px) 48px;justify-content:center;align-items:center;gap:15px}
-.arrow{height:46px;width:46px;border:1px solid var(--line);border-radius:50%;background:#fffaf8d9;color:var(--rose-dark);font-size:24px;cursor:pointer;transition:.2s}
-.arrow:hover{background:var(--rose);color:white;transform:scale(1.05)}
-.frame{margin:0;position:relative;height:min(56vh,570px);min-height:340px;border-radius:15px;overflow:hidden;background:#eee4e1;box-shadow:0 22px 62px #76545b21}
-.frame img{display:block;width:100%;height:100%;object-fit:contain;background:#f3e9e6}
-.counter{position:absolute;right:15px;top:15px;padding:8px 12px;border-radius:30px;background:#fffaf0e8;color:var(--ink);font:600 12px system-ui,sans-serif}
-.heart{position:absolute;left:15px;top:15px;background:#fffaf0e8;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;color:var(--rose);font-size:18px}
-.caption{text-align:center;max-width:650px;margin:17px auto 14px;min-height:65px}
-.caption h2{font-size:23px;font-weight:500;margin:0 0 6px}
-.caption p{font:14px/1.7 system-ui,sans-serif;color:var(--muted);margin:0}
-.controls{display:flex;justify-content:center;align-items:center;gap:14px;margin:0 auto 12px}
-.navbtn{border:1px solid var(--line);background:#fff;color:var(--rose-dark);border-radius:30px;padding:9px 15px;font:600 12px system-ui,sans-serif;cursor:pointer}
-.navbtn:hover{background:#c99f9f}
-.progress{color:var(--muted);font:600 11px system-ui,sans-serif;letter-spacing:.08em;min-width:48px;text-align:center}
-.thumbs{display:flex;justify-content:center;gap:8px;overflow-x:auto;padding:4px 5px 10px;scrollbar-width:thin;scrollbar-color:#d9b3b6 transparent}
-.thumb{flex:0 0 48px;height:60px;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#eee;opacity:.58;cursor:pointer;transition:.18s}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.thumb:hover{opacity:1}
-.thumb.active{opacity:1;border-color:var(--rose)}
-.footer{text-align:center;margin-top:8px;color:#a48c90;font:11px system-ui,sans-serif;letter-spacing:.04em}
-.footer b{color:var(--rose);font-size:14px;font-weight:400}
-@media(max-width:650px){
-  .wrap{width:calc(100% - 24px);padding:17px 0 24px}
-  .topline{margin-bottom:15px}
-  .top-note{font-size:10px}
-  .intro-page{min-height:calc(100svh - 170px);height:auto}
-  .intro-page:before,.intro-page:after{font-size:38px}
-  .intro-page h1{font-size:47px}
-  .intro-page p{font-size:14px}
-  .stage{grid-template-columns:34px minmax(0,1fr) 34px;gap:6px}
-  .arrow{width:33px;height:33px;font-size:19px}
-  .frame{height:min(52vh,510px);min-height:300px;border-radius:11px}
-  .caption{margin:14px auto 12px;min-height:63px;padding:0 8px}
-  .caption h2{font-size:20px}
-  .caption p{font-size:13px}
-  .thumbs{justify-content:flex-start}
-  .thumb{flex-basis:43px;height:55px}
-  .controls{gap:9px}
-  .navbtn{padding:8px 12px;font-size:11px}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24191d">
+  <meta name="description" content="Welcome to our world.">
+  <title>WELCOME TO OUR WORLD</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<main class="wrap">
-  <header class="topline">
-    <div class="brand"><span>♡</span> LITTLE LOVE ALBUM</div>
-    <div class="top-note">dibuat dengan sepenuh hati</div>
-  </header>
+  <main class="landing">
+    <div class="glow glow-one" aria-hidden="true"></div>
+    <div class="glow glow-two" aria-hidden="true"></div>
 
-  <!-- Halaman 1: intro -->
-  <section class="page intro-page active" id="intro">
-    <div class="intro-content">
-      <div class="eyebrow">sebuah album kecil</div>
-      <h1>Untuk<br>Kesayanganku Rosiana maulida</h1>
-      <p>Delapan belas halaman sederhana, berisi foto-foto dan hal-hal manis yang selalu ingin aku ingat tentang kamu.</p>
-      <button class="start" id="start">Lihat album &nbsp; →</button>
-    </div>
-  </section>
+    <header class="topline">
+      <span class="heart-mark">♡</span>
+      <span>OUR LITTLE UNIVERSE</span>
+      <span class="heart-mark">♡</span>
+    </header>
 
-  <!-- Slot tampilan foto untuk halaman 2–18 -->
-  <section class="page" id="photo-page">
-    <div class="stage">
-      <button class="arrow" id="prev" aria-label="Halaman sebelumnya">‹</button>
-      <figure class="frame">
-        <img id="photo" src="foto/a.jpeg" alt="Foto kesayangan">
-        <span class="heart">♡</span>
-        <figcaption class="counter" id="counter">02 / 18</figcaption>
+    <section class="hero" aria-label="Welcome to our world">
+      <div class="heading-wrap">
+        <p class="eyebrow">a place made for us</p>
+        <h1>WELCOME <span>TO</span><br>OUR WORLD</h1>
+      </div>
+
+      <figure class="photo-card">
+        <img
+          class="couple-photo"
+          src="aku dan kamu.jpeg"
+          alt="Foto berdua di tepi pantai"
+          fetchpriority="high">
+        <figcaption>
+          <span>just you, me &amp; our memories</span>
+          <span class="caption-heart">♥</span>
+        </figcaption>
       </figure>
-      <button class="arrow" id="next" aria-label="Halaman berikutnya">›</button>
-    </div>
-    <section class="caption" aria-live="polite">
-      <h2 id="title"></h2>
-      <p id="text"></p>
+
+      <p class="little-note">
+        Every love story is beautiful, but ours is my favorite.
+      </p>
+
+      <div class="visit-links">
+        <a class="visit-link"
+           href="https://angga147.github.io/Website-yngdll14/">
+          ENTER OUR WORLD <span aria-hidden="true">↗</span>
+        </a>
+        <a class="visit-link"
+           href="https://angga147.github.io/un/">
+          OUR LITTLE SURPRISE <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </section>
-  </section>
 
-  <div class="controls">
-    <button class="navbtn" id="back">← Sebelumnya</button>
-    <span class="progress" id="progress">1 / 18</span>
-    <button class="navbtn" id="forward">Selanjutnya →</button>
-  </div>
-  <nav class="thumbs" id="thumbs" aria-label="Pilih halaman foto"></nav>
-  <footer class="footer">Dari angga, untuk yana <b>♡</b></footer>
-</main>
+    <footer>MADE WITH LOVE <span>♥</span></footer>
+    <div class="hearts" aria-hidden="true"></div>
+  </main>
 
-<script>
-// SLOT FOTO: ubah alamat foto, judul, atau caption pada masing-masing baris.
-// Simpan foto di folder "foto", misalnya: foto/a.jpeg
-const slides = [
-  ['a.jpeg',   'Senyum yang paling aku suka', 'Di tengah hari yang ramai, senyummu selalu jadi bagian paling menenangkan.'],
-  ['d.jpeg',   'Dekat itu sederhana', 'Cukup lihat wajahmu, rasanya hari ini jadi jauh lebih baik.'],
-  ['f.jpeg',   'Cantik dari sudut mana pun', 'Cahaya matahari pun seperti sengaja datang untuk menyapamu.'],
-  ['g.jpeg',   'Momen spontan', 'Foto yang tidak direncanakan kadang justru jadi yang paling berkesan.'],
-  ['h.jpeg',   'Teduh dan manis', 'Ada rasa nyaman yang selalu hadir setiap kali melihat senyummu.'],
-  ['k.jpeg',   'Gaya andalanmu', 'Tatapan kecil ini sukses bikin aku senyum-senyum sendiri.'],
-  ['m.jpeg',   'Manisnya sederhana', 'Tidak perlu banyak kata—kamu sudah jadi alasan bahagia.'],
-  ['n.jpeg',   'Senyum di hari yang cerah', 'Pemandangannya indah, tapi tetap kamu yang paling menarik perhatianku.'],
-  ['p.jpeg',   'Hari yang ingin kuingat', 'Semoga ada lebih banyak cerita indah yang bisa kita simpan bersama.'],
-  ['r.jpeg',   'Kedipan paling gemas', 'Satu kedipan darimu, seribu kali aku jatuh hati lagi.'],
-  ['s.jpeg',   'Ekspresi favorit', 'Aku bisa melihat foto ini berkali-kali dan tetap tersenyum.'],
-  ['u.jpeg',   'Tatapan penuh cerita', 'Di balik foto sederhana, ada banyak hal kecil yang ingin selalu kuingat.'],
-  ['v.jpeg',   'Anggun dengan caramu', 'Kamu selalu punya cara sendiri untuk membuat semuanya terasa indah.'],
-  ['x.jpeg',   'Cantik di bawah matahari', 'Hari cerah jadi semakin cerah saat kamu ada di dalamnya.'],
-  ['y.jpeg',   'Senyum yang bikin rindu', 'Bahkan saat foto ini selesai dilihat, aku tetap ingin melihatnya lagi.'],
-  ['z.jpeg',   'Pesona yang tenang', 'Ada kelembutan yang membuatku betah memandangmu lama-lama.'],
-  ['zse.jpeg', 'Favorit yang satu ini', 'Terima kasih sudah menjadi warna paling indah dalam hari-hariku.']
-];
-
-let page = 0;
-const intro = document.querySelector('#intro');
-const photoPage = document.querySelector('#photo-page');
-const photo = document.querySelector('#photo');
-const title = document.querySelector('#title');
-const text = document.querySelector('#text');
-const counter = document.querySelector('#counter');
-const progress = document.querySelector('#progress');
-const thumbs = document.querySelector('#thumbs');
-
-function go(n) {
-  page = Math.max(0, Math.min(17, n));
-  intro.classList.toggle('active', page === 0);
-  photoPage.classList.toggle('active', page > 0);
-  progress.textContent = `${String(page + 1).padStart(2, '0')} / 18`;
-
-  document.querySelector('#back').disabled = page === 0;
-  document.querySelector('#back').style.opacity = page === 0 ? '.45' : '1';
-  document.querySelector('#forward').textContent =
-    page === 17 ? 'Kembali ke awal ↺' : 'Berikutnya →';
-
-  if (page > 0) {
-    const [file, heading, caption] = slides[page - 1];
-    photo.src = file;
-    photo.alt = `Foto ${heading.toLowerCase()}`;
-    title.textContent = heading;
-    text.textContent = caption;
-    counter.textContent = `${String(page + 1).padStart(2, '0')} / 18`;
-  }
-
-  document.querySelectorAll('.thumb').forEach((el, i) => {
-    el.classList.toggle('active', i === page - 1);
-  });
-
-  if (page > 0) {
-    thumbs.children[page - 1]?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center'
-    });
-  }
-
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-document.querySelector('#start').onclick = () => go(1);
-document.querySelector('#prev').onclick = () => go(page - 1);
-document.querySelector('#next').onclick = () => go(page + 1);
-document.querySelector('#back').onclick = () => go(page - 1);
-document.querySelector('#forward').onclick = () => go(page === 17 ? 0 : page + 1);
-
-// Buat thumbnail untuk setiap slot foto.
-slides.forEach(([file], i) => {
-  const button = document.createElement('button');
-  button.className = 'thumb';
-  button.setAttribute('aria-label', `Buka halaman ${i + 2}`);
-  button.innerHTML = `<img src="${file}" alt="" loading="lazy">`;
-  button.onclick = () => go(i + 1);
-  thumbs.append(button);
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'ArrowLeft') go(page - 1);
-  if (event.key === 'ArrowRight') go(page + 1);
-});
-
-let startX = 0;
-photo.addEventListener('touchstart', event => {
-  startX = event.touches[0].clientX;
-}, {passive: true});
-
-photo.addEventListener('touchend', event => {
-  const delta = event.changedTouches[0].clientX - startX;
-  if (Math.abs(delta) > 45) go(page + (delta < 0 ? 1 : -1));
-}, {passive: true});
-
-go(0);
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
